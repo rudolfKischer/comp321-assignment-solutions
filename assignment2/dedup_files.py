@@ -67,13 +67,8 @@ test_cases = get_test_cases()
 for test_case in test_cases:
     for f in test_case:
         hash_byte = file_hash(f)
-        # print(hex(hash_byte))
 
     buckets = get_double_hash_buckets(test_case)
     cardinality = get_cardinality(test_case)
     collisions = get_hash_collisions(test_case)
     print(cardinality, collisions)
-    # print(f'unique files: {cardinality}')
-    # print(f'hash_collisions:{collisions}')
-    # pprint(buckets)
-    # pprint(get_hash_overlaps(buckets))
