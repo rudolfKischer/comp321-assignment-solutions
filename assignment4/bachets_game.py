@@ -20,12 +20,13 @@ def main():
             if not line:
                 break
             
-        except ValueError:
+        except (ValueError, EOFError):
             break
+
 
         n_stones, m = int(line[0]), int(line[1])
         valid_moves = [int(x) for x in line[2:m+2]]
-        
+        #valid_moves = sorted(valid_moves, reverse=True)
         results.append(get_winner(n_stones, valid_moves))
 
     for winner in results:
