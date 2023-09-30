@@ -71,31 +71,33 @@ def test_cases():
         yield houses
 
 
-tests = list(test_cases())
+
+
+def generate_cases(t):
+    # return as a list of test cases
+    from random import randint, uniform
+    min_val = -200000
+    max_val = 200000
+    n = 50000
+
+    test_cases = []
+    for _ in range(t):
+        test_case = []
+        for _ in range(n):
+            x = randint(min_val, max_val)
+            y = randint(min_val, max_val)
+            test_case.append([x, y])
+        test_cases.append(test_case)
+    return test_cases
+
+
+# tests = list(test_cases())
+tests = generate_cases(10)
 
 for test_case in tests:
     result = get_shortest_max_distance(test_case)
     result = [f"{num:.12f}" for num in result]
     print(*result)
-
-# tests = generate_cases(10)
-
-# def generate_cases(t):
-#     # return as a list of test cases
-#     from random import randint, uniform
-#     min_val = -200000
-#     max_val = 200000
-#     n = 50000
-
-#     test_cases = []
-#     for _ in range(t):
-#         test_case = []
-#         for _ in range(n):
-#             x = randint(min_val, max_val)
-#             y = randint(min_val, max_val)
-#             test_case.append([x, y])
-#         test_cases.append(test_case)
-#     return test_cases
 
 # def print_generate_test_cases(t):
 #     from random import randint, uniform
