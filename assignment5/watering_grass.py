@@ -1,5 +1,4 @@
 import math
-import sys
 
 def get_dx(w,r):
     dx = math.sqrt((r**2)-(w/2)**2)
@@ -41,12 +40,9 @@ def min_sprinklers(coverages, l):
 
 def main():
     results = []
-    lines = sys.stdin.readlines()
-    print(lines)
-    for _ in range(35):
+    line = input().split()
+    while line != []:
         try:
-            line = input().split()
-            #print(line)
             n, l, w = int(line[0]), int(line[1]), int(line[2])
             #print(f"n={n}, l={l}, w={w}")
         except (ValueError, IndexError) as e:  # Corrected the exception catching syntax
@@ -57,6 +53,8 @@ def main():
             #print(f"sprinkler_positions: {sprinkler_positions}")
             results.append(min_sprinklers(get_true_coverages(sprinkler_positions,w), l))
             #print(f"true_coverages: {result}")
+        line = input().split()
+        print(line)
     for result in results:
         print(result)
 main()
