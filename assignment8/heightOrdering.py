@@ -13,9 +13,7 @@ def insertion_sort_step_count(test_case):
     # a step is an insertion
 
     steps = 0
-
     # need to handle the case that it is already sorted
-
     # sort in ascending order
     for i in range(1, len(test_case)):
         j = i
