@@ -108,5 +108,5 @@ def main():
     number_of_cases = int(input())
     results = (count_unique_repeated_substrings(input().strip()) for _ in range(number_of_cases))
     print(*results, sep='\n')
-
+    # Add comment so it registers my commit
 main()
