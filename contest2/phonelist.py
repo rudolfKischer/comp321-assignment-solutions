@@ -1,41 +1,36 @@
-
-end_token = '$'
-
-class SuffixTreeNode:
-    def __init__(self):
+from random import randint
+class TrieNode:
+    def __init__(self) -> None:
         self.children = {}
-        self.is_end = False
+        self.is_eos = False
 
-class SuffixTree:
-
-    def __init__(self):
-        self.root = SuffixTreeNode()
-
+class PrefixTrie:
+    def __init__(self) -> None:
+        self.root = TrieNode()
+    
     def insert(self,s):
-        # Check if s is prefix of any other string before inserting
-        curr = self.root
+        curr_root = self.root
         for c in s:
-            if c not in curr.children:
-                curr.children[c] = SuffixTreeNode()
-            curr = curr.children[c]
-            if curr.is_end:
+            if c not in curr_root.children:
+                curr_root.children[c] = TrieNode()
+            
+            curr_root = curr_root.children[c]
+
+            if curr_root.is_eos:
                 return True
             
-        curr.children[end_token] = SuffixTreeNode()
-        curr.is_end = True
+        curr_root.is_eos = True
         return False
-        
 
-    
-
-
+def generate_phone_numbers(n):
+    return ["".join([str(randint(0,9)) for _ in range(10)]) for _ in range(n)]
 
 def main():
     n = int(input())
     results = []
     for _ in range(n):
         numbers = int(input())
-        t = SuffixTree()
+        t = PrefixTrie()
         f = False
         for i in range(numbers):
             f = t.insert(input())
@@ -43,9 +38,12 @@ def main():
                 break
         results.append(f)
     for r in results:
-        print("NO") if r else print("YES")
-
+        if r:
+            print("NO")
+        else:
+            print("YES")
 main()
+#test()
     
 
                 
